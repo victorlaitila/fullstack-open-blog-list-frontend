@@ -1,0 +1,19 @@
+.notification {
+  border: solid;
+  margin-bottom: 20px;
+  background-color: beige;
+  width: fit-content;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+.success-notification-color {
+  color: green;
+}
+.failure-notification-color {
+  color: red;
+}
+.display-flex-gap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
