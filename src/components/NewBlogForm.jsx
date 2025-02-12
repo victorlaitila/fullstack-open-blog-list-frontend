@@ -17,7 +17,7 @@ const NewBlogForm = ({createNewBlog}) => {
 
   const showForm = { display: formVisible ? '' : 'none', marginTop: '-10px', marginBottom: '10px' }
   const hideForm = { display: formVisible ? 'none' : '' }
-  
+
   return (
     <div>
       <div style={showForm}>
@@ -25,7 +25,7 @@ const NewBlogForm = ({createNewBlog}) => {
         <form onSubmit={addBlog}>
           <div className='display-flex-gap'>
             Title:
-            <input 
+            <input
               type='text'
               value={blogTitle}
               name='BlogTitle'
@@ -34,7 +34,7 @@ const NewBlogForm = ({createNewBlog}) => {
           </div>
           <div className='display-flex-gap'>
             Author:
-            <input 
+            <input
               type='text'
               value={blogAuthor}
               name='BlogAuthor'
@@ -43,7 +43,7 @@ const NewBlogForm = ({createNewBlog}) => {
           </div>
           <div className='display-flex-gap'>
             Url:
-            <input 
+            <input
               type='text'
               value={blogUrl}
               name='BlogUrl'

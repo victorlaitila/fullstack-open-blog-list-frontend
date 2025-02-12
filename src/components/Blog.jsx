@@ -1,5 +1,6 @@
-const Blog = ({ blog, blogVisible, toggleBlogVisibility, likeBlog, username, deleteBlog }) => {
+import PropTypes from 'prop-types'
 
+const Blog = ({blog, blogVisible, toggleBlogVisibility, likeBlog, username, deleteBlog}) => {
   const BlogDetails = () => {
     return (
       <div className='blog-item'>
@@ -14,7 +15,7 @@ const Blog = ({ blog, blogVisible, toggleBlogVisibility, likeBlog, username, del
         </div>
         {blog.user.name}
         {
-          username === blog.user.username && 
+          username === blog.user.username &&
           <div>
             <button className='delete-button' onClick={() => deleteBlog(blog)}>delete</button>
           </div>
@@ -27,14 +28,23 @@ const Blog = ({ blog, blogVisible, toggleBlogVisibility, likeBlog, username, del
     <div>
       {
         blogVisible ?
-        BlogDetails() :
-        <div className='display-flex-gap blog-item'>
-          {blog.title} - {blog.author}
-          <button onClick={() => toggleBlogVisibility(blog.id, true)}>view</button>
-        </div>
+          BlogDetails() :
+          <div className='display-flex-gap blog-item'>
+            {blog.title} - {blog.author}
+            <button onClick={() => toggleBlogVisibility(blog.id, true)}>view</button>
+          </div>
       }
     </div>
   )
+}
+
+Blog.propTypes = {
+  blog: PropTypes.object.isRequired,
+  blogVisible: PropTypes.bool.isRequired,
+  toggleBlogVisibility: PropTypes.func.isRequired,
+  likeBlog: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+  deleteBlog: PropTypes.func.isRequired
 }
 
 export default Blog

@@ -32,7 +32,7 @@ const App = () => {
   const handleLogin = async (username, password) => {
     try {
       const user = await loginService.login({username, password})
-      window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user)) 
+      window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
       blogService.setToken(user.token)
       setUser(user)
     } catch (error) {
@@ -72,7 +72,7 @@ const App = () => {
   }
 
   const likeBlog = async (id) => {
-    try {      
+    try {
       const blogToUpdate = blogs.find(blog => blog.id === id)
       const newBlogObject = {...blogToUpdate, likes: blogToUpdate.likes + 1}
       const updatedBlog = await blogService.updateById(id, newBlogObject)
@@ -86,25 +86,25 @@ const App = () => {
     setNotification({message, type})
     setTimeout(() => {
       setNotification(null)
-    }, 5000);
+    }, 5000)
   }
 
   return (
     <div>
       <Notification notification={notificaton} />
-      { 
-        user ? 
-        <BlogList 
-          blogs={blogs}
-          user={user}
-          handleLogout={handleLogout}
-          createNewBlog={createNewBlog}
-          likeBlog={likeBlog}
-          deleteBlog={deleteBlog}
-        /> : 
-        <LoginForm 
-          handleLogin={handleLogin} 
-        /> 
+      {
+        user ?
+          <BlogList
+            blogs={blogs}
+            user={user}
+            handleLogout={handleLogout}
+            createNewBlog={createNewBlog}
+            likeBlog={likeBlog}
+            deleteBlog={deleteBlog}
+          /> :
+          <LoginForm
+            handleLogin={handleLogin}
+          />
       }
     </div>
   )
