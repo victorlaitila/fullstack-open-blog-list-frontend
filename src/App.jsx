@@ -17,7 +17,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    initializeBlogs() 
+    initializeBlogs()
   }, [])
 
   useEffect(() => {
@@ -57,8 +57,22 @@ const App = () => {
     }
   }
 
+  const deleteBlog = async (blog) => {
+    const confirmationMsg = `Are you sure you want to delete blog '${blog.title}' by '${blog.author}'?`
+    if (window.confirm(confirmationMsg)) {
+      try {
+        await blogService.deleteById(blog.id)
+        setBlogs(blogs.filter(b => b.id !== blog.id))
+        showNotification(`Blog '${blog.title}' by '${blog.author}' successfully deleted`, 'success')
+      } catch {
+        showNotification('Blog has already been deleted, refreshing list', 'failure')
+        initializeBlogs()
+      }
+    }
+  }
+
   const likeBlog = async (id) => {
-    try {
+    try {      
       const blogToUpdate = blogs.find(blog => blog.id === id)
       const newBlogObject = {...blogToUpdate, likes: blogToUpdate.likes + 1}
       const updatedBlog = await blogService.updateById(id, newBlogObject)
@@ -86,6 +100,7 @@ const App = () => {
           handleLogout={handleLogout}
           createNewBlog={createNewBlog}
           likeBlog={likeBlog}
+          deleteBlog={deleteBlog}
         /> : 
         <LoginForm 
           handleLogin={handleLogin} 

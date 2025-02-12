@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Blog from './Blog'
 import NewBlogForm from './NewBlogForm'
 
-const BlogList = ({blogs, user, handleLogout, createNewBlog, likeBlog}) => {
+const BlogList = ({blogs, user, handleLogout, createNewBlog, likeBlog, deleteBlog}) => {
   const [openBlogs, setOpenBlogs] = useState([])
 
   const toggleBlogVisibilityById = (id, newValue) => {
@@ -31,6 +31,8 @@ const BlogList = ({blogs, user, handleLogout, createNewBlog, likeBlog}) => {
           blogVisible={openBlogs.includes(blog.id)}
           toggleBlogVisibility={toggleBlogVisibilityById}
           likeBlog={likeBlog}
+          username={user.username}
+          deleteBlog={deleteBlog}
         />
       )}
       <br />

@@ -23,3 +23,11 @@
   padding: 6px;
   margin-bottom: 14px;
 }
+.delete-button {
+  background-color: rgb(148, 45, 45);
+  color: white;
+  border-radius: 2px;
+}
+button {
+  cursor: pointer;
+}
