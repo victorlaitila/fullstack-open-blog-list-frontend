@@ -13,7 +13,7 @@ const App = () => {
 
   const initializeBlogs = async () => {
     const blogs = await blogService.getAll()
-    setBlogs(blogs)
+    setBlogs(blogs.sort((a, b) => b.likes - a.likes))
   }
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const App = () => {
   const createNewBlog = async (title, author, url) => {
     try {
       const newBlog = await blogService.create({ title: title, author: author, url: url, user: user.id })
-      setBlogs(blogs.concat(newBlog))
+      setBlogs(blogs.concat(newBlog).sort((a, b) => b.likes - a.likes))
       showNotification(`A new blog '${newBlog.title}' by '${newBlog.author}' added`, 'success')
     } catch (error) {
       console.error(error)
@@ -62,7 +62,7 @@ const App = () => {
       const blogToUpdate = blogs.find(blog => blog.id === id)
       const newBlogObject = {...blogToUpdate, likes: blogToUpdate.likes + 1}
       const updatedBlog = await blogService.updateById(id, newBlogObject)
-      setBlogs(blogs.map(blog => blog.id === id ? updatedBlog : blog))
+      setBlogs(blogs.map(blog => blog.id === id ? updatedBlog : blog).sort((a, b) => b.likes - a.likes))
     } catch (error) {
       showNotification(error.message, 'failure')
     }

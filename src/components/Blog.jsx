@@ -8,7 +8,7 @@ const Blog = ({ blog, blogVisible, toggleBlogVisibility, likeBlog }) => {
             {blog.title} {blog.author}
             <button onClick={() => toggleBlogVisibility(blog.id, false)}>hide</button>
           </div>
-          {blog.url}
+          <a href={blog.url}>{blog.url}</a>
           <div className='display-flex-gap'>
             {`Likes: ${blog.likes}`}
             <button onClick={() => likeBlog(blog.id)}>like</button>
