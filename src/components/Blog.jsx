@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 
-const Blog = ({blog, blogVisible, toggleBlogVisibility, likeBlog, username, deleteBlog}) => {
+const Blog = ({blog, likeBlog, username, deleteBlog}) => {
+  const [blogDetailsVisible, setBlogDetailsVisible] = useState(false)
+
   const BlogDetails = () => {
     return (
       <div className='blog-item'>
         <div className='display-flex-gap'>
           {blog.title} - {blog.author}
-          <button onClick={() => toggleBlogVisibility(blog.id, false)}>hide</button>
+          <button onClick={() => setBlogDetailsVisible(false)}>hide</button>
         </div>
         <a href={blog.url}>{blog.url}</a>
         <div className='display-flex-gap'>
@@ -25,13 +28,13 @@ const Blog = ({blog, blogVisible, toggleBlogVisibility, likeBlog, username, dele
   }
 
   return (
-    <div>
+    <div id='blog'>
       {
-        blogVisible ?
+        blogDetailsVisible ?
           BlogDetails() :
           <div className='display-flex-gap blog-item'>
             {blog.title} - {blog.author}
-            <button onClick={() => toggleBlogVisibility(blog.id, true)}>view</button>
+            <button onClick={() => setBlogDetailsVisible(true)}>view</button>
           </div>
       }
     </div>
@@ -40,8 +43,6 @@ const Blog = ({blog, blogVisible, toggleBlogVisibility, likeBlog, username, dele
 
 Blog.propTypes = {
   blog: PropTypes.object.isRequired,
-  blogVisible: PropTypes.bool.isRequired,
-  toggleBlogVisibility: PropTypes.func.isRequired,
   likeBlog: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
   deleteBlog: PropTypes.func.isRequired

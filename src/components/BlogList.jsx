@@ -4,16 +4,6 @@ import NewBlogForm from './NewBlogForm'
 import PropTypes from 'prop-types'
 
 const BlogList = ({blogs, user, handleLogout, createNewBlog, likeBlog, deleteBlog}) => {
-  const [openBlogs, setOpenBlogs] = useState([])
-
-  const toggleBlogVisibilityById = (id, newValue) => {
-    if (newValue) {
-      setOpenBlogs(openBlogs.concat(id))
-    } else {
-      setOpenBlogs(openBlogs.filter(blog => blog !== id))
-    }
-  }
-
   return (
     <div>
       <h2>Blogs</h2>
@@ -29,8 +19,6 @@ const BlogList = ({blogs, user, handleLogout, createNewBlog, likeBlog, deleteBlo
         <Blog
           key={blog.id}
           blog={blog}
-          blogVisible={openBlogs.includes(blog.id)}
-          toggleBlogVisibility={toggleBlogVisibilityById}
           likeBlog={likeBlog}
           username={user.username}
           deleteBlog={deleteBlog}
