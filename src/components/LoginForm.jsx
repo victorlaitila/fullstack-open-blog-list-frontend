@@ -13,12 +13,13 @@ const LoginForm = ({handleLogin}) => {
   }
 
   return (
-    <div>
+    <div data-testid='login-form'>
       <h2>Log in to application</h2>
       <form onSubmit={login}>
         <div className='display-flex-gap'>
           Username
           <input
+            data-testid='username-input'
             type='text'
             value={username}
             name='Username'
@@ -28,6 +29,7 @@ const LoginForm = ({handleLogin}) => {
         <div className='display-flex-gap'>
           Password
           <input
+            data-testid='password-input'
             type='password'
             value={password}
             name='Password'

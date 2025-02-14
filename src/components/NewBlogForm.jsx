@@ -26,6 +26,7 @@ const NewBlogForm = ({createNewBlog}) => {
           <div className='display-flex-gap'>
             Title:
             <input
+              data-testid='blog-title-input'
               type='text'
               value={blogTitle}
               name='BlogTitle'
@@ -35,6 +36,7 @@ const NewBlogForm = ({createNewBlog}) => {
           <div className='display-flex-gap'>
             Author:
             <input
+              data-testid='blog-author-input'
               type='text'
               value={blogAuthor}
               name='BlogAuthor'
@@ -44,6 +46,7 @@ const NewBlogForm = ({createNewBlog}) => {
           <div className='display-flex-gap'>
             Url:
             <input
+              data-testid='blog-url-input'
               type='text'
               value={blogUrl}
               name='BlogUrl'

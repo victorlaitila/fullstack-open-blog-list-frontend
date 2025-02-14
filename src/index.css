@@ -9,7 +9,7 @@
 .success-notification-color {
   color: green;
 }
-.failure-notification-color {
+.error-notification-color {
   color: red;
 }
 .display-flex-gap {

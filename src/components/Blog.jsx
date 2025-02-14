@@ -28,7 +28,7 @@ const Blog = ({blog, likeBlog, username, deleteBlog}) => {
   }
 
   return (
-    <div id='blog'>
+    <div>
       {
         blogDetailsVisible ?
           BlogDetails() :

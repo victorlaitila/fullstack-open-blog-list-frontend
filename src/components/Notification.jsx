@@ -2,11 +2,11 @@ const Notification = ({notification}) => {
   if (notification) {
     if (notification.type === 'success') {
       return (
-        <div className='notification success-notification-color'>{notification.message}</div>
+        <div data-testid='success-notification' className='notification success-notification-color'>{notification.message}</div>
       )
     } else {
       return (
-        <div className='notification failure-notification-color'>{notification.message}</div>
+        <div data-testid='error-notification' className='notification error-notification-color'>{notification.message}</div>
       )
     }
   }

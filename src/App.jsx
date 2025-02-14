@@ -37,7 +37,7 @@ const App = () => {
       setUser(user)
     } catch (error) {
       console.error(error)
-      showNotification('Wrong username or password', 'failure')
+      showNotification('Wrong username or password', 'error')
     }
   }
 
@@ -53,7 +53,7 @@ const App = () => {
       showNotification(`A new blog '${newBlog.title}' by '${newBlog.author}' added`, 'success')
     } catch (error) {
       console.error(error)
-      showNotification('Failed to create blog', 'failure')
+      showNotification('Failed to create blog', 'error')
     }
   }
 
@@ -65,7 +65,7 @@ const App = () => {
         setBlogs(blogs.filter(b => b.id !== blog.id))
         showNotification(`Blog '${blog.title}' by '${blog.author}' successfully deleted`, 'success')
       } catch {
-        showNotification('Blog has already been deleted, refreshing list', 'failure')
+        showNotification('Blog has already been deleted, refreshing list', 'error')
         initializeBlogs()
       }
     }
@@ -78,7 +78,7 @@ const App = () => {
       const updatedBlog = await blogService.updateById(id, newBlogObject)
       setBlogs(blogs.map(blog => blog.id === id ? updatedBlog : blog).sort((a, b) => b.likes - a.likes))
     } catch (error) {
-      showNotification(error.message, 'failure')
+      showNotification(error.message, 'error')
     }
   }
 
